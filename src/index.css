@@ -1,29 +1,13 @@
-@import "/src/Components/Navbar/Navbar.css";
-
-:root {
-  --primary-color: #5ab9d8;
-  --primary-color-hover: #1b6a84;
-}
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: var(--foreground-color);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.dark--mode {
-  --background-color: rgb(41, 39, 39);
-  --foreground-color: rgb(143, 143, 143);
-  --logo-toggle: whitesmoke;
-  --container-color: #444;
 }

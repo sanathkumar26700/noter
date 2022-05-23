@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-regular-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.1.18",
-    "axios": "^0.27.2",
     "dayjs": "^1.11.2",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
@@ -15,9 +10,7 @@
     "mockman-js": "^1.1.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-toastify": "^9.0.1",
     "uuid": "^8.3.2"
   },
   "scripts": {
