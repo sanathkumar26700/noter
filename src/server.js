@@ -10,6 +10,10 @@ import {
   userProfilehandler,
 } from "./backend/controllers/AuthController";
 import {
+  getAllTagsHandler,
+  getTagHandler,
+} from "./backend/controllers/TagsController";
+import {
   archiveNoteHandler,
   createNoteHandler,
   deleteNoteHandler,
@@ -23,6 +27,7 @@ import {
   restoreFromTrashHandler,
 } from "./backend/controllers/TrashController";
 import { users } from "./backend/db/users";
+import { tags } from "./backend/db/tags"
 
 export function makeServer({ environment = "development" } = {}) {
   const server = new Server({
@@ -34,6 +39,7 @@ export function makeServer({ environment = "development" } = {}) {
     models: {
       user: Model,
       notes: Model,
+      tags: Model
     },
 
     seeds(server) {
@@ -46,6 +52,9 @@ export function makeServer({ environment = "development" } = {}) {
           trash: [],
         })
       );
+
+      tags.forEach((item) => server.create("tag", { ...item }));
+
     },
 
     routes() {
@@ -57,6 +66,10 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user route (private)
       this.get("/user", userProfilehandler.bind(this));
+
+      // tags routes
+      this.get("/tags", getAllTagsHandler.bind(this));
+      this.get("/tags/:tagId", getTagHandler.bind(this));
 
       // notes routes (private)
       this.get("/notes", getAllNotesHandler.bind(this));
