@@ -1,3 +1,5 @@
+import React from 'react';
+
 const DarkModeButton = () => {
     let darkMode = localStorage.getItem('darkMode');
 
