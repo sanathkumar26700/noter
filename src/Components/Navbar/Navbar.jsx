@@ -1,9 +1,8 @@
-import React from 'react'
 import { Link} from 'react-router-dom';
 import "../Navbar/Navbar.css";
 import {useAuth} from '../../Context/authContext'
 import { toast } from "react-toastify";
-import DarkModeButton from '../../Utilities/JS/darkMode'
+import DarkModeButton from '../Dark mode/darkMode.jsx'
 
 
 function Navbar() {
@@ -16,7 +15,7 @@ function Navbar() {
             token : '',
             isAuthenticated : false
         })
-        toast.success('Logged out successfully !')
+        toast.success('Logged out successfully !') 
     }
 
   return (
