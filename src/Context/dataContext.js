@@ -11,8 +11,9 @@ const DataContextProvider =({children}) =>{
 
     const {auth:{token}} = useAuth();
 
-    const [state, dispatch] =  useReducer(dataReducer,
-        {  data : [],
+    const [data, dataDispatch] =  useReducer(dataReducer,
+        {   
+            data : [],
             createdTime : "",
             priority : "",
             isLoading: true,
@@ -20,7 +21,7 @@ const DataContextProvider =({children}) =>{
             selectedTags : [],
             reset : false,
             searchFor : ""
-})
+        })
     
     useEffect(() =>{
         (async function(){
@@ -28,13 +29,12 @@ const DataContextProvider =({children}) =>{
             let response = await axios.get('/api/notes', {
                 headers: { authorization: token },
             });
-            dispatch({type : "GET_DATA"})
+            dataDispatch({type : "GET_DATA"})
             const notesList = response.data.notes.map((note) =>{
                 return {...note}
             })
             console.log(notesList)
-
-            dispatch({type : "LOAD_DATA", payload : {isLoading : false, notesList}})
+            dataDispatch({type : "LOAD_DATA", payload : {isLoading : false, notesList}})
             }catch(err){
                 alert(err.message)
             }
@@ -45,9 +45,9 @@ const DataContextProvider =({children}) =>{
         (async function(){
             try{
             let response = await axios.get('/api/tags');
-            dispatch({type : "GET_DATA"})
+            dataDispatch({type : "GET_DATA"})
             const tags = response.data.tags
-            dispatch({type : "LOAD_DATA", payload : {isLoading : false, tags}})
+            dataDispatch({type : "LOAD_DATA", payload : {isLoading : false, tags}})
             console.log(tags)
             }catch(err){
                 alert(err.message)
@@ -56,7 +56,7 @@ const DataContextProvider =({children}) =>{
     },[token])
 
     
-   return(<dataContext.Provider value={{state, dispatch}}>{children}</dataContext.Provider>)
+   return(<dataContext.Provider value={{data, dataDispatch}}>{children}</dataContext.Provider>)
 }
 const useDataContext = () => useContext(dataContext);
 
