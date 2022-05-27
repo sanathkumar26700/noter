@@ -8,34 +8,34 @@ import { v4 as uuid } from "uuid";
 export const tags = [
   {
     _id: uuid(),
-    tag: "Work"
+    tagTitle: "Work"
   },
   {
     _id: uuid(),
-    tag: "Home"
+    tagTitle: "Home"
   },
   {
     _id: uuid(),
-    tag: "Ideas"
+    tagTitle: "Ideas"
   },
   {
     _id: uuid(),
-    tag: "Teams"
+    tagTitle: "Teams"
   },
   {
     _id: uuid(),
-    tag: "School"
+    tagTitle: "School"
   },
   {
     _id: uuid(),
-    tag: "College"
+    tagTitle: "College"
   },
   {
     _id: uuid(),
-    tag: "Health & Wellness"
+    tagTitle: "Health & Wellness"
   },
   {
     _id: uuid(),
-    tag: "Exercise"
+    tagTitle: "Exercise"
   }
 ];
