@@ -1,9 +1,9 @@
 import { Link} from 'react-router-dom';
-import "../Navbar/Navbar.css";
 import {useAuth} from '../../Context/authContext'
 import { toast } from "react-toastify";
 import DarkModeButton from '../Dark mode/darkMode.jsx'
 
+import "./navbar.css";
 
 function Navbar() {
     
