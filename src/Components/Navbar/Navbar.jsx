@@ -23,7 +23,7 @@ function Navbar() {
             <div className=" logo ">
                 <Link to="/home" className="anchor-style--none">
                     <span className="logo--title logo--title-black ">note<span className="dot ">r</span>
-                    <img src="https://icons.iconarchive.com/icons/martz90/circle-addon2/256/notepad-icon.png" alt=" eye--logo" className="logo--img img-responsive"/>
+                    <img src="https://icons.iconarchive.com/icons/martz90/circle-addon2/256/notepad-icon.png" alt=" noter--logo" className="logo--img img-responsive"/>
                     </span>
                 </Link>
             </div>
