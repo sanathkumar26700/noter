@@ -2,12 +2,14 @@ import { Link} from 'react-router-dom';
 import {useAuth} from '../../Context/authContext'
 import { toast } from "react-toastify";
 import DarkModeButton from '../Dark mode/darkMode.jsx'
+import { useUserData } from '../../Context/userDataContext'
 
 import "./navbar.css";
 
 function Navbar() {
     
     const {auth:{isAuthorized}, setAuth} = useAuth()
+    const { userData : {notesData}  } = useUserData()
 
     const handleLogout = () =>{
         localStorage.removeItem('token')
@@ -36,7 +38,7 @@ function Navbar() {
                             <div className="nav-list--item__icon--wrapper">
                                 <span>
                                     <i className="fas icon fa-file-alt">
-                                        {isAuthorized  && <span className="status-badge notification-badge">{'0'}</span>}
+                                        {isAuthorized  && <span className="status-badge notification-badge">{notesData.length}</span>}
                                     </i>
                                 </span>
                                 <span className="icon--text">Notes</span>
