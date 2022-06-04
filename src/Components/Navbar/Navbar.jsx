@@ -5,7 +5,7 @@ import { useDataContext } from '../../Context/dataContext'
 import { toast } from "react-toastify";
 import DarkModeButton from '../Dark mode/darkMode.jsx'
 
-import "./navbar.css";
+import "./Navbar.css";
 
 function Navbar() {
     
