@@ -1,5 +1,5 @@
 import "./App.css";
-import Navbar from "./Components/Navbar/navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import NavBarRoutes from "./Routes/navbar-routes";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import {useAuth} from '../../Context/authContext'
-import { toast } from "react-toastify";
-import DarkModeButton from '../Dark mode/darkMode.jsx'
 import { useUserData } from '../../Context/userDataContext'
 import { useDataContext } from '../../Context/dataContext'
+import { toast } from "react-toastify";
+import DarkModeButton from '../Dark mode/darkMode.jsx'
 
 import "./navbar.css";
 
@@ -23,7 +23,7 @@ function Navbar() {
         toast.success('Logged out successfully !') 
     }
 
-  return (
+    return (
         <nav className="nav__container bottom-shadow">
             <div className=" logo ">
                 <Link to="/home" className="anchor-style--none">
@@ -51,7 +51,6 @@ function Navbar() {
 
             <nav className="nav__container--nav-list">
                 <ul className="list-bulletless social-links">
-
                     <li>
                         <Link to="/notes" className="nav-list--item">
                             <div className="nav-list--item__icon--wrapper">
@@ -64,7 +63,6 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-
                     <li>
                         <Link to="/archives" className="nav-list--item">
                             <div className="nav-list--item__icon--wrapper">
@@ -77,7 +75,6 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-
                     <li>
                         <Link to="/trash" className="nav-list--item">
                             <div className="nav-list--item__icon--wrapper">
@@ -90,7 +87,6 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-
                     {isAuthorized ? 
                     (<li>
                         <div onClick = {handleLogout} className="nav-list--item__icon--wrapper">
@@ -108,11 +104,10 @@ function Navbar() {
                     <li>
                         <DarkModeButton/>
                     </li>
-
                 </ul>
             </nav>
         </nav>
-  )
+    )
 }
 
 export default Navbar
