@@ -8,7 +8,7 @@ const getNotesHandler = async (token, userDataDispatch) => {
     });
 
     if (response.status === 200) {
-      userDataDispatch({ type: "GET_NOTES", payload: response?.data?.notes });
+      userDataDispatch({ type: "SET_NOTES", payload: response?.data?.notes });
     } else {
       throw new Error();
     }
@@ -24,7 +24,7 @@ const createNoteHandler = async (note, token, userDataDispatch) => {
       { note: note },
       { headers: { authorization: token } }
     );
-    console.log(response)
+
     if (response.status === 201) {
       userDataDispatch({ type: "SET_NOTES", payload: response?.data?.notes });
       toast.success("Note Successfully Added");
@@ -34,7 +34,7 @@ const createNoteHandler = async (note, token, userDataDispatch) => {
   }
 };
 
-const updateNoteHandler = async (note, token, userDataDispatch) => {
+const editNoteDataHandler = async (note, token, userDataDispatch) => {
   try {
     const response = await axios.post(
       `/api/notes/${note._id}`,
@@ -73,4 +73,4 @@ const notePinHandler = async (note, token, userDataDispatch) => {
 
 
 
-export { getNotesHandler, createNoteHandler, updateNoteHandler, notePinHandler};
+export { getNotesHandler, createNoteHandler, editNoteDataHandler, notePinHandler};
