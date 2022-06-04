@@ -1,0 +1,79 @@
+.modal__container {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  max-width: 60rem;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+}
+
+.modal__title--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.modal__title {
+  font-size: 2.5rem;
+}
+
+.Modal__description .title {
+  border: 1px solid rgb(183, 180, 180);
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.modal__btn i {
+  font-size: 2.5rem;
+}
+
+.modal__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.rich-text-editor {
+  box-shadow: none;
+  height: 15rem;
+}
+
+.note-modal__action--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 5rem;
+}
+
+.options {
+  padding: 2rem 0 3rem 0;
+}
+
+.options select {
+  padding: 5px;
+  border: 1px solid rgb(183, 180, 180);
+  border-radius: 5px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
