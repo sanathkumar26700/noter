@@ -1,15 +1,18 @@
-import { Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {useAuth} from '../../Context/authContext'
 import { toast } from "react-toastify";
 import DarkModeButton from '../Dark mode/darkMode.jsx'
 import { useUserData } from '../../Context/userDataContext'
+import { useDataContext } from '../../Context/dataContext'
 
 import "./navbar.css";
 
 function Navbar() {
     
+    const navigate = useNavigate()
     const {auth:{isAuthorized}, setAuth} = useAuth()
     const { userData : {notesData}  } = useUserData()
+    const {data : {searchFor}, dataDispatch} = useDataContext()
 
     const handleLogout = () =>{
         localStorage.removeItem('token')
@@ -28,6 +31,22 @@ function Navbar() {
                     <img src="https://icons.iconarchive.com/icons/martz90/circle-addon2/256/notepad-icon.png" alt=" noter--logo" className="logo--img img-responsive"/>
                     </span>
                 </Link>
+            </div>
+
+            <div className="searchbar__container">
+                <input 
+                    className="input__field searchbar__input--field" 
+                    type="search" 
+                    placeholder="Search your note by title..." 
+                    id="search--bar"
+                    value = {searchFor}
+                    onChange={(e) =>{
+                        navigate("/notes")
+                        dataDispatch({type : "SEARCH", payload : e.target.value})}}
+                    /> 
+                    <label htmlFor="search--bar">
+                        {searchFor === "" ? <i className="fas fa-search icon btn"></i> : null}
+                    </label>
             </div>
 
             <nav className="nav__container--nav-list">
