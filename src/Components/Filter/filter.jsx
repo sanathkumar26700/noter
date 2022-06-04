@@ -25,25 +25,26 @@ function Filter({display}) {
                     <div className="filter--header">
                         <h1>filter</h1>
                         <span className="filter--reset badge--text badge--red"
-                        onClick = {() => dataDispatch({type: "CLEAR"})}
-                        >reset
+                        onClick = {() => dataDispatch({type: "CLEAR"})}>
+                            reset
                         </span>
                     </div>
                 </div>
                 <div className="filter--box">
                 <div className="filter__container">
                     <h1>Sort by Tags</h1>
-                    {tags.map((tag) =>{
+                    {tags.map((tag, id) =>{
                     return (<div>
                         <input 
                             className="tag--input"  
                             type="checkbox" 
                             id={tag._id}
+                            key = {tag._id}
                             value={tag.tagTitle}
                             checked = {selectedTags.includes(tag.tagTitle)}
                             onChange = {(e) =>  dataDispatch({type : "SORT_BY_TAGS" , payload : (tagHandler(e.target.value))})}
-                            />
-                            <label className="tag--label" key = {tag._id} htmlFor={tag._id}>{tag.tagTitle}</label>
+                        />
+                        <label className="tag--label" key={id} htmlFor={tag._id}>{tag.tagTitle}</label>
                     </div>)}
                     )}
                 </div>
