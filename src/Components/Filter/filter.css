@@ -1,0 +1,136 @@
+.filter__section {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.filter--box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.6rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  border: 1px solid var(--border-color);
+  box-shadow: var(---box-shadow--card);
+}
+
+.filter--box h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.tag--label {
+  margin-left: 1rem;
+}
+
+.tag--input:hover,
+.tag--label:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.filter--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider__label--container label {
+  font-size: 1.5rem;
+}
+
+.filter__container {
+  margin-bottom: 1rem;
+}
+
+.filter--reset {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.filter__container label {
+  margin-left: 0.5rem;
+  font-size: 1.75rem;
+  cursor: pointer;
+  display: inline;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+
+  font: inherit;
+  color: currentColor;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.15rem solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: inline-grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--primary-color);
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 0.15rem) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+
+  font: inherit;
+  color: currentColor;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.15rem solid currentColor;
+  border-radius: 0.15rem;
+  transform: translateY(-0.075rem);
+  display: inline-grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--primary-color);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.filter__container label:hover {
+  color: var(--primary-color);
+}
+
+@media (max-width: 400px) {
+  .filter__action--container {
+    display: block;
+  }
+  .filter__section {
+    display: none;
+  }
+}

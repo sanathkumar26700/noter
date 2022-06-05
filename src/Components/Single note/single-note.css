@@ -1,0 +1,123 @@
+.noteCard__container {
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  padding: 1.5rem;
+  overflow: hidden;
+  border-radius: 5px;
+  height: 27.5rem;
+  position: relative;
+}
+
+.noteCard__container:hover {
+  outline: 1px solid var(--primary-color);
+}
+
+.default {
+  background-color: white;
+}
+
+.blue {
+  background-color: rgb(130, 207, 227);
+}
+
+.grey {
+  background-color: rgb(200, 200, 200);
+}
+
+.green {
+  background-color: yellowgreen;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.noteCard__Primary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.noteCard--title {
+  font-size: 2.25rem;
+}
+
+.noteCard__description--container {
+  font-size: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.noteCard__description--container span {
+  font-weight: bolder;
+  margin-right: 0.8rem;
+}
+
+.noteCard--tag,
+.noteCard--date,
+.noteCard--priority {
+  font-size: 1.3rem;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  padding: 0.2rem 0.8rem;
+  font-weight: bolder;
+}
+
+.Low {
+  color: var(--warning-color);
+}
+
+.Medium {
+  color: var(--positive-color);
+}
+
+.High {
+  color: var(--negative-color);
+}
+
+.noteCard--content {
+  margin: 0.5rem 0;
+  padding: 1rem 0;
+  font-size: 1.75rem;
+  height: 15rem;
+  scroll-behavior: auto;
+  overflow-y: auto;
+}
+
+.noteCard__secondary--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.noteCard__secondary--action {
+  display: flex;
+}
+
+.noteCard__secondary--action button,
+.btn--pin {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground-color);
+}
+
+.noteCard__secondary--action {
+  font-size: 2rem;
+}
+
+.btn--pin {
+  font-size: 1.5rem;
+}
+
+.noteCard__secondary--action button i:active {
+  color: var(--black-color);
+}

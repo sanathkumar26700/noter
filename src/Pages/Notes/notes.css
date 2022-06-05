@@ -1,0 +1,107 @@
+/*----------note list-----------------------------------------*/
+
+.note-list__container {
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+}
+
+.note-list__section {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 35rem));
+  padding: 0 1rem 1rem 1rem;
+}
+
+.notes-list__section--heading {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.note-list__section .card__note--details {
+  flex-direction: column;
+}
+
+.note-list__section .note__price-discount {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.note-list__section .card__note--title,
+.note-list__section .card__note--company {
+  display: -webkit-box;
+  overflow: hidden;
+  font-weight: bold;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+  -webkit-line-clamp: 1;
+}
+
+.note-list__section .img {
+  height: 15rem;
+  width: 100%;
+}
+
+.note-list__section .card__btn--container .btn {
+  padding: 0.5rem 1.5rem;
+}
+
+.filter__action--container {
+  display: none;
+}
+
+.filter__action--container button {
+  margin-left: auto;
+}
+
+.loader--image {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+}
+
+.note-list__empty--text {
+  text-align: center;
+  font-size: 400%;
+  margin-top: 35vh;
+}
+
+.card__btn--add-note {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  position: fixed;
+  top: 12vh;
+  right: 2rem;
+  padding: 1rem;
+}
+
+/*---------------------------------------------------------------------*/
+
+@media (max-width: 400px) {
+  .note-list__container {
+    grid-template-columns: 1fr;
+  }
+
+  .note-list__section {
+    grid-template-columns: 1fr;
+  }
+
+  .note-list__section .img {
+    height: 15rem;
+    width: 12rem;
+  }
+
+  .loader--image {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+  }
+
+  .filter__action--container {
+    display: block;
+  }
+
+  .note-list__empty--text {
+    font-size: 200%;
+  }
+}

@@ -203,3 +203,37 @@ export const trashNoteHandler = function (schema, request) {
     );
   }
 };
+/**
+ * This handler handles updating a note
+ * send POST Request at /notes/pin/:noteId
+ * body contains {note}
+ * */
+
+ export const notePinHandler = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    const { note } = JSON.parse(request.requestBody);
+    const { noteId } = request.params;
+    const noteIndex = user.notes.findIndex((note) => note._id === noteId);
+    user.notes[noteIndex] = { ...user.notes[noteIndex], isPinned: !note.isPinned };
+    this.db.users.update({ _id: user._id }, user);
+    return new Response(200, {}, { notes: user.notes });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
