@@ -21,7 +21,7 @@ const createNoteHandler = async (note, token, userDataDispatch) => {
   try {
     const response = await axios.post(
       "/api/notes",
-      { note: note },
+      { note },
       { headers: { authorization: token } }
     );
 
@@ -69,8 +69,5 @@ const notePinHandler = async (note, token, userDataDispatch) => {
     console.log(error);
   } 
 };
-
-
-
 
 export { getNotesHandler, createNoteHandler, editNoteDataHandler, notePinHandler};

@@ -1,5 +1,5 @@
 import HtmlParser from 'react-html-parser/lib/HtmlParser';
-import { notePinHandler}  from '../../Utilities/JS/notesDataHandler';
+import { notePinHandler}  from '../../Utilities/JS/Data Handlers/notesDataHandler';
 import { useAuth } from '../../Context/authContext.js'
 import { useUserData } from '../../Context/userDataContext'
 
