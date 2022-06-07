@@ -1,0 +1,17 @@
+.archive-list__container {
+  height: fit-content;
+  display: grid;
+  padding: 2rem;
+}
+
+.archive-list__section {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 35rem));
+  padding: 0 1rem 1rem 1rem;
+}
+
+.archives__section--heading {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
