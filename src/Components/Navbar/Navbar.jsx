@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {useAuth} from '../../Context/authContext'
 import { useUserData } from '../../Context/userDataContext'
 import { useDataContext } from '../../Context/dataContext'
@@ -10,8 +10,9 @@ import "./Navbar.css";
 function Navbar() {
     
     const navigate = useNavigate()
+    const location = useLocation()
     const {auth:{isAuthorized}, setAuth} = useAuth()
-    const { userData : {notesData}  } = useUserData()
+    const { userData : {notesData, archivesData}  } = useUserData()
     const {data : {searchFor}, dataDispatch} = useDataContext()
 
     const handleLogout = () =>{
@@ -59,7 +60,7 @@ function Navbar() {
                                         {isAuthorized  && <span className="status-badge notification-badge">{notesData.length}</span>}
                                     </i>
                                 </span>
-                                <span className="icon--text">Notes</span>
+                                <span className={`icon--text ${location.pathname === '/notes' && `active__icon--text`}`}>Notes</span>
                             </div>
                         </Link>
                     </li>
@@ -68,10 +69,10 @@ function Navbar() {
                             <div className="nav-list--item__icon--wrapper">
                                 <span>
                                         <i className="fas icon fa-archive">
-                                            {isAuthorized  && <span className="status-badge notification-badge">{'0'}</span>}
+                                            {isAuthorized  && <span className="status-badge notification-badge">{archivesData.length}</span>}
                                         </i>
                                 </span>
-                                <span className="icon--text">Archives</span>
+                                <span className={`icon--text ${location.pathname === '/archives' && `active__icon--text`}`}>Archives</span>
                             </div>
                         </Link>
                     </li>
@@ -83,7 +84,7 @@ function Navbar() {
                                             {isAuthorized  && <span className="status-badge notification-badge">{'0'}</span>}
                                         </i>
                                 </span>
-                                <span className="icon--text">Trash</span>
+                                <span className={`icon--text ${location.pathname === '/trash' && `active__icon--text`}`}>Trash</span>
                             </div>
                         </Link>
                     </li>
