@@ -3,7 +3,7 @@ import { RichTextEditor } from '../Rich Text Editor/rich-text-editor';
 import { useAuth } from '../../Context/authContext.js'
 import { useDataContext } from '../../Context/dataContext.js'
 import { useUserData } from '../../Context/userDataContext'
-import { createNoteHandler, editNoteDataHandler } from '../../Utilities/JS/notesDataHandler';
+import { createNoteHandler, editNoteDataHandler } from '../../Utilities/JS/Data Handlers/notesDataHandler';
 import dayjs from "dayjs";
 
 import './note-modal.css';

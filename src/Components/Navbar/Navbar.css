@@ -38,6 +38,11 @@
 .icon--text {
   text-align: center;
   font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.active__icon--text {
+  color: var(--primary-color);
 }
 
 .nav__container--nav-list ul .nav-list--item__icon--wrapper .btn {
