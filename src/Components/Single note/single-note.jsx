@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import HtmlParser from 'react-html-parser/lib/HtmlParser';
+import { useLocation } from "react-router-dom";
 import { notePinHandler}  from '../../Utilities/JS/Data Handlers/notesDataHandler';
+import {addNoteToArchivesHandler, restoreNoteFromArchivesDataHandler} from '../../Utilities/JS/Data Handlers/archivesDataHandler'
 import { useAuth } from '../../Context/authContext.js'
 import { useUserData } from '../../Context/userDataContext'
 
@@ -10,18 +13,15 @@ function SingleNote({note, setEditNoteData, setShowModal}) {
   const {title, content, color, isPinned, priority, tag, date, _id} = note
   
   const {auth : {token}} = useAuth();
-
+  const location = useLocation()
   const { userDataDispatch  } = useUserData()
+
+  const [fetchingArchives, setFetchingArchives] = useState(false)
 
   const editNoteDataHandler = (e) => {
     e.preventDefault();
     setEditNoteData(note);
     setShowModal(true);
-  };
-
-  const callNotePinHandler = (e) => {
-    e.preventDefault();
-    notePinHandler(note, token, userDataDispatch);
   };
 
   return (
@@ -30,12 +30,14 @@ function SingleNote({note, setEditNoteData, setShowModal}) {
         <div className='noteCard__Primary'>
           <h1 className='noteCard--title'>{title}</h1>
           <div className='noteCard__Primary--action'>
+          {location.pathname === '/notes' &&
             <button
               className='btn--pin'
-              onClick={callNotePinHandler}
+              onClick={() => notePinHandler(note, token, userDataDispatch)}
             >
               <i className={` ${isPinned ? 'fas fa-times' : 'fas fa-thumbtack'}`}></i>
             </button>
+          }
           </div>
         </div>
         <div className='noteCard--content'>
@@ -54,15 +56,30 @@ function SingleNote({note, setEditNoteData, setShowModal}) {
         <div className='noteCard__secondary--container'>
             <span className='noteCard--date'>{date}</span>
             <div className='noteCard__secondary--action'>
-              <button onClick={editNoteDataHandler}>
-                <i className="fas fa-edit"></i>
-              </button>
-              <button>
-                <i className="fas fa-archive"></i>
-              </button>
-              <button>
-                <i className="fas fa-trash-alt"></i>
-              </button>
+              {location.pathname === '/notes' && 
+                <button onClick={editNoteDataHandler}>
+                  <i className="fas fa-edit"></i>
+                </button>
+              }
+              {location.pathname === '/notes' &&
+                <button 
+                    onClick={()=> addNoteToArchivesHandler(note, token, userDataDispatch, setFetchingArchives)}
+                    disabled={fetchingArchives}>
+                  <i className="fas fa-archive"></i>
+                </button>
+              }
+              {location.pathname === '/archives' &&
+                <button 
+                    onClick={()=> restoreNoteFromArchivesDataHandler(note, token, userDataDispatch, setFetchingArchives)}
+                    disabled={fetchingArchives}>
+                  <i className="fas fa-sign-out-alt"></i>
+                </button>
+              }
+              {location.pathname === '/notes' && 
+                <button>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              }
             </div>
         </div>
         </article>
