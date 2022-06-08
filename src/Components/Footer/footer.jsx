@@ -1,4 +1,7 @@
 import './footer.css'
+import '../../Utilities/CSS/social-links.css'
+import '../../Utilities/CSS/Utilities.css'
+import '../Navbar/Navbar.css'
 
 const Footer = ( ) => {
     return(

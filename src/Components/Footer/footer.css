@@ -8,8 +8,7 @@
 }
 
 .footer__credits--container {
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
 
 .main--footer h3 {
