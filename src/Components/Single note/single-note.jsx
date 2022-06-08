@@ -3,6 +3,7 @@ import HtmlParser from 'react-html-parser/lib/HtmlParser';
 import { useLocation } from "react-router-dom";
 import { notePinHandler}  from '../../Utilities/JS/Data Handlers/notesDataHandler';
 import {addNoteToArchivesHandler, restoreNoteFromArchivesDataHandler} from '../../Utilities/JS/Data Handlers/archivesDataHandler'
+import {addNoteToTrashHandler, restoreNoteFromTrashDataHandler, deleteNoteDataHandler} from '../../Utilities/JS/Data Handlers/trashDataHandler'
 import { useAuth } from '../../Context/authContext.js'
 import { useUserData } from '../../Context/userDataContext'
 
@@ -17,6 +18,7 @@ function SingleNote({note, setEditNoteData, setShowModal}) {
   const { userDataDispatch  } = useUserData()
 
   const [fetchingArchives, setFetchingArchives] = useState(false)
+  const [fetchingTrash, setFetchingTrash] = useState(false)
 
   const editNoteDataHandler = (e) => {
     e.preventDefault();
@@ -43,6 +45,8 @@ function SingleNote({note, setEditNoteData, setShowModal}) {
         <div className='noteCard--content'>
           {HtmlParser(content)}
         </div>
+          
+        <div className='noteCard__secondary--container'>
         <div className='noteCard__description--container'>
             <span className={`noteCard--priority ${priority}`}>
               {priority}
@@ -52,32 +56,51 @@ function SingleNote({note, setEditNoteData, setShowModal}) {
               {tag}
             </div>
             )}
-          </div>
-        <div className='noteCard__secondary--container'>
             <span className='noteCard--date'>{date}</span>
+          </div>
             <div className='noteCard__secondary--action'>
               {location.pathname === '/notes' && 
-                <button onClick={editNoteDataHandler}>
+                <button className='btn--action btn--edit'
+                  onClick={editNoteDataHandler}>
                   <i className="fas fa-edit"></i>
                 </button>
               }
               {location.pathname === '/notes' &&
-                <button 
+              <button className='btn--action btn--archive'
                     onClick={()=> addNoteToArchivesHandler(note, token, userDataDispatch, setFetchingArchives)}
                     disabled={fetchingArchives}>
                   <i className="fas fa-archive"></i>
                 </button>
               }
               {location.pathname === '/archives' &&
-                <button 
+              <button className='btn--action btn--restore'
                     onClick={()=> restoreNoteFromArchivesDataHandler(note, token, userDataDispatch, setFetchingArchives)}
                     disabled={fetchingArchives}>
                   <i className="fas fa-sign-out-alt"></i>
                 </button>
               }
               {location.pathname === '/notes' && 
-                <button>
+              <button 
+                className='btn--action btn--trash'
+                onClick={()=>addNoteToTrashHandler(note, token, userDataDispatch, setFetchingTrash)}
+                disabled={fetchingTrash}>
                   <i className="fas fa-trash-alt"></i>
+                </button>
+              }
+              {location.pathname === '/trash' && 
+              <button 
+                className='btn--action btn--delete'
+                onClick={()=>deleteNoteDataHandler(note, token, userDataDispatch, setFetchingTrash)}
+                disabled={fetchingTrash}>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              }
+              {location.pathname === '/trash' && 
+              <button 
+                className='btn--action btn--restore'
+                onClick={()=> restoreNoteFromTrashDataHandler(note, token, userDataDispatch, setFetchingTrash)}
+                disabled={fetchingTrash}>
+                  <i className="fas fa-sign-out-alt"></i>
                 </button>
               }
             </div>
