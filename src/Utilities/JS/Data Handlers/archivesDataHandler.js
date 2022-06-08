@@ -41,7 +41,6 @@ const restoreNoteFromArchivesDataHandler = async (note, token, userDataDispatch,
       {  },
       { headers: { authorization: token } }
     );
-    console.log(response)
     if (response.status === 200) {
       userDataDispatch({ type: "SET_ARCHIVES", payload: response?.data?.archives });
       userDataDispatch({ type: "SET_NOTES", payload: response?.data?.notes });
