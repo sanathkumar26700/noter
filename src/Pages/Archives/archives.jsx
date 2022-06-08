@@ -9,13 +9,15 @@ function Archives() {
 
   return(
     <section className="archive-list__container">
-    <h1 className='archives__section--heading'>Archives ({archivesData.length})</h1>
       {archivesData.length ?
+      <>
+        <h1 className='archives__section--heading'>Archives ({archivesData.length})</h1>
         <section className="archive-list__section">
           {archivesData.map((note) =><SingleNote note = {note} key={note._id}/>)}
         </section>
+      </>
           : 
-        <h1 className = "note-list__empty--text">Your archives are empty😣</h1>
+      <h1 className = "note-list__empty--text">Your archives are empty😣</h1>
       }
     </section>
   )

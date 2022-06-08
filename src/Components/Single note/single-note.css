@@ -45,9 +45,9 @@
 .noteCard__description--container {
   font-size: 1.5rem;
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.25rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .noteCard__description--container span {
@@ -96,6 +96,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  min-height: 6rem;
 }
 
 .noteCard__secondary--action {
@@ -108,6 +109,7 @@
   border: none;
   cursor: pointer;
   color: var(--foreground-color);
+  margin-left: 0.5rem;
 }
 
 .noteCard__secondary--action {
@@ -116,6 +118,48 @@
 
 .btn--pin {
   font-size: 1.5rem;
+}
+
+.btn--action::before {
+  font-size: 1.3rem;
+  padding: 0rem 0.8rem;
+  font-weight: bolder;
+  position: absolute;
+  display: none;
+}
+
+.btn--action:hover::before {
+  display: block;
+}
+
+.btn--edit::before {
+  top: 4.25rem;
+  right: 8.1rem;
+  content: "edit";
+}
+
+.btn--archive::before {
+  top: 4.25rem;
+  right: 3rem;
+  content: "archive";
+}
+
+.btn--trash::before {
+  top: 4.25rem;
+  right: 0rem;
+  content: "trash";
+}
+
+.btn--restore::before {
+  top: 3.6rem;
+  right: 0rem;
+  content: "restore";
+}
+
+.btn--delete::before {
+  top: 3.8rem;
+  right: 3.3rem;
+  content: "delete";
 }
 
 .noteCard__secondary--action button i:active {
