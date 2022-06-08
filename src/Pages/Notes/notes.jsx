@@ -59,7 +59,7 @@ function Notes() {
                 </section>
                 {finalUnPinnedNotes.length ? <h1 className='notes-list__section--heading'>My Notes</h1> : null}
                 {!finalUnPinnedNotes.length ? 
-                  <h1 className='notes-list__section--heading'>You don't any notes in this tag 😣</h1> 
+                  <h1 className='notes-list__section--heading'>Can't find suitable notes😣</h1> 
                   :
                   <section className="note-list__section">
                     {finalUnPinnedNotes.map((note) =>(
