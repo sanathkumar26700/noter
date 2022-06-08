@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import {useAuth} from '../../Context/authContext'
 import { useUserData } from '../../Context/userDataContext'
 import { useDataContext } from '../../Context/dataContext'
@@ -6,13 +6,15 @@ import { toast } from "react-toastify";
 import DarkModeButton from '../Dark mode/darkMode.jsx'
 
 import "./Navbar.css";
+import '../../Utilities/CSS/social-links.css'
+import '../../Utilities/CSS/Utilities.css'
 
 function Navbar() {
     
     const navigate = useNavigate()
     const location = useLocation()
     const {auth:{isAuthorized}, setAuth} = useAuth()
-    const { userData : {notesData, archivesData}  } = useUserData()
+    const { userData : {notesData, archivesData, trashData}  } = useUserData()
     const {data : {searchFor}, dataDispatch} = useDataContext()
 
     const handleLogout = () =>{
@@ -51,7 +53,7 @@ function Navbar() {
             </div>
 
             <nav className="nav__container--nav-list">
-                <ul className="list-bulletless social-links">
+                <ul className="list-bulletless nav-links">
                     <li>
                         <Link to="/notes" className="nav-list--item">
                             <div className="nav-list--item__icon--wrapper">
@@ -60,9 +62,9 @@ function Navbar() {
                                         {isAuthorized  && <span className="status-badge notification-badge">{notesData.length}</span>}
                                     </i>
                                 </span>
-                                <span className={`icon--text ${location.pathname === '/notes' && `active__icon--text`}`}>Notes</span>
                             </div>
                         </Link>
+                        <NavLink to='/notes' className={({isActive}) => `nav--text ${isActive ? `active__nav--text` : undefined}`}>Notes</NavLink>
                     </li>
                     <li>
                         <Link to="/archives" className="nav-list--item">
@@ -72,21 +74,21 @@ function Navbar() {
                                             {isAuthorized  && <span className="status-badge notification-badge">{archivesData.length}</span>}
                                         </i>
                                 </span>
-                                <span className={`icon--text ${location.pathname === '/archives' && `active__icon--text`}`}>Archives</span>
                             </div>
                         </Link>
+                        <NavLink to='/archives' className={({isActive}) => `nav--text ${isActive ? `active__nav--text` : undefined}`}>Archives</NavLink>
                     </li>
                     <li>
                         <Link to="/trash" className="nav-list--item">
                             <div className="nav-list--item__icon--wrapper">
                                 <span>
                                         <i className="fas icon fa-trash">
-                                            {isAuthorized  && <span className="status-badge notification-badge">{'0'}</span>}
+                                            {isAuthorized  && <span className="status-badge notification-badge">{trashData.length}</span>}
                                         </i>
                                 </span>
-                                <span className={`icon--text ${location.pathname === '/trash' && `active__icon--text`}`}>Trash</span>
                             </div>
                         </Link>
+                        <NavLink to='/trash' className={({isActive}) => `nav--text ${isActive ? `active__nav--text` : undefined}`}>Trash</NavLink>
                     </li>
                     {isAuthorized ? 
                     (<li>
