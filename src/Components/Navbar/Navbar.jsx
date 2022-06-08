@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
 import {useAuth} from '../../Context/authContext'
 import { useUserData } from '../../Context/userDataContext'
 import { useDataContext } from '../../Context/dataContext'
@@ -12,7 +12,6 @@ import '../../Utilities/CSS/Utilities.css'
 function Navbar() {
     
     const navigate = useNavigate()
-    const location = useLocation()
     const {auth:{isAuthorized}, setAuth} = useAuth()
     const { userData : {notesData, archivesData, trashData}  } = useUserData()
     const {data : {searchFor}, dataDispatch} = useDataContext()
