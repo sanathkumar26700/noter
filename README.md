@@ -28,8 +28,8 @@ https://user-images.githubusercontent.com/53991484/174447360-198f86b7-7dfb-4ed2-
 	  - Time
 	  - Priority
 5) Note list page where one can create notes in a rich text editor
-6) Archives page
-7) Trash page
+6) Archives page where one can restore the archived note
+7) Trash page where one can restore a note or delete it permanently
 8) Dynamic Note card with features like,
 	  - Add to Archives
 	  - Add to trash
